@@ -1,6 +1,8 @@
 # Project Euler
 The purpose of this repo is to catalogue my solutions to the Project Euler coding challenges.
 
+Currently the code itself is in fairly good shape, but the organization and usability is not. Consider this a work in progress.
+
 ## Running the code
 This was originally written in Python 2 with an eye towards compatbility with Python 3. I'm currently in the process of resurrecting this codebase so that it can be run with a modern Python 3 installation. The idea is that you can
 1. Download the repo
