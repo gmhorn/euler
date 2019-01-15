@@ -62,10 +62,10 @@ def is_left_truncatable_prime(n):
 def ANSWER():
     right_trunc_primes = right_truncatable_primes()
     truncatable_primes = filter(is_left_truncatable_prime, right_trunc_primes)
-    euler_trunc_primes = filter(lambda x: x>9, truncatable_primes)
+    euler_trunc_primes = list(filter(lambda x: x>9, truncatable_primes))
     assert len(euler_trunc_primes) == 11
     return functools.reduce(operator.add, euler_trunc_primes)
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)
