@@ -63,5 +63,5 @@ def ANSWER():
     return functools.reduce(operator.add, products)
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)

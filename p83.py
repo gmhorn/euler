@@ -19,8 +19,7 @@ and is equal to 2297.
 Find the minimal path sum in the 80 by 80 matrix, from the left column to the
 right column."""
 
-from __future__ import print_function
-import euler.utils.graph
+import utils.graph
 
 def load_file(filename):
     """ Takes filename of line separated rows of comma-separated entries.
@@ -35,7 +34,7 @@ def load_file(filename):
     with open(filename) as f:
         m = [list(map(int, line.split(','))) for line in f]
     # Create digraph from matrix
-    graph = euler.utils.graph.DiGraph()
+    graph = utils.graph.DiGraph()
     ROWS = len(m)
     COLS = len(m[0])
     for r in range(ROWS):
@@ -73,22 +72,22 @@ def load_file(filename):
 
 def ANSWER():
     graph, start, end = load_file('matrix.txt')
-    path = euler.utils.graph.dijkstra(graph, start, end)
-    path_cost = euler.utils.graph.path_cost(graph, path)
+    path = utils.graph.dijkstra(graph, start, end)
+    path_cost = utils.graph.path_cost(graph, path)
     return path_cost
 
 def TEST():
     expect = [131, 201, 96, 342, 234, 103, 18, 150, 111, 422, 121, 37, 331]
     graph, start, end = load_file('matrix_test.txt')
-    actual = euler.utils.graph.dijkstra(graph, start, end)
-    actual_cost = euler.utils.graph.path_cost(graph, actual)
+    actual = utils.graph.dijkstra(graph, start, end)
+    actual_cost = utils.graph.path_cost(graph, actual)
     print('ACTUAL:', actual, '=', actual_cost)
     print('EXPECT:', expect, '=', sum(expect))
 
 if __name__ == '__main__':
-    import euler.utils
+    import utils
     #TEST()
-    euler.utils.solution_printer(ANSWER)
+    utils.solution_printer(ANSWER)
 
 
 

@@ -44,5 +44,5 @@ def ANSWER():
                 return a, b, a*b
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)
