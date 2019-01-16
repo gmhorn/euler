@@ -13,7 +13,7 @@ sequence?
 
 import itertools
 import math
-import euler.utils.numtheory
+import utils.numtheory
 
 
 def are_in_arithmetic_sequence(items):
@@ -77,7 +77,7 @@ def ANSWER():
     What 12-digit number do you form by concatenating the three terms in this
     sequence? """
     # 1. Get a list (iterator really) of all 4-digit primes.
-    primes = euler.utils.numtheory.bounded_soe(9999, 1000)
+    primes = utils.numtheory.bounded_soe(9999, 1000)
     # 2. Group primes which are permutations together
     permutation_groups = digit_permutation_tuples(primes)
     # 3. Create 3 filters on the permutation groups:
@@ -104,5 +104,5 @@ def TIME_ANSWER(repeats=10):
     return time/repeats
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)
