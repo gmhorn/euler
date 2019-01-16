@@ -2,8 +2,8 @@ import itertools
 import math
 import bisect
 import collections
-import euler.utils.contfrac
-import euler.utils
+import utils.contfrac
+import utils
 
 def soe():
     """ Generator version of the Sieve of Eratosthenes.
@@ -172,7 +172,7 @@ def factorize(n):
     """
     return trial_division(n)
 
-@euler.utils.memoize
+@utils.memoize
 def divisors(n):
     """ Returns a list of divisors of n.
     See: http://stackoverflow.com/a/1010463
@@ -341,13 +341,7 @@ class TrialDivPrimeTester(object):
     >>> prime_tester(99999999) # Largest testable value
     False
     >>> prime_tester(100000001) # Will fail
-    Traceback (most recent call last):
-      File "<pyshell#16>", line 1, in <module>
-        prime_tester(100000001) # Will fail
-      File "C:\Python27\Lib\site-packages\euler\utils\numtheory.py", line 82, in __call__
-        % self.big_cutoff)
-    ValueError: We cannot test number greater than 100000000
-    """
+    ValueError: We cannot test number greater than 100000000"""
 
     def __init__(self, tuning):
         """ Create a trial division prime tester which creates a list
@@ -386,7 +380,7 @@ def solve_pell(D):
     D = int(D)
     assert int(D**0.5)**2 != D
     x1, y1 = 0, 0
-    cf = euler.utils.contfrac.SquareRootCF(D)
+    cf = utils.contfrac.SquareRootCF(D)
     for h, k in cf.convergents():
         if h*h - D*k*k == 1:
             x1, y1 = h, k

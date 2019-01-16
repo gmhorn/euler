@@ -11,7 +11,7 @@ It can be verified that T(285) == P(165) == H(143) == 40755.
 Find the next triangle number that is also pentagonal and hexagonal.
 """
 
-import euler.utils.numtheory
+import utils.numtheory
 
 def tph_integers():
     """ Since triangular numbers are a subset of hexagonal, we need m, n such
@@ -39,7 +39,7 @@ def tph_integers():
     yield 1     # One is the trivial solution
     yield 40755 # Yield our known lowest triangular-pentagonal-hexagonal number
     p, q, D = 989, 571, 3
-    pell_seq = euler.utils.numtheory.solve_pell(D)
+    pell_seq = utils.numtheory.solve_pell(D)
     for r, s in pell_seq:
         x, y = p*r-D*q*s, p*s-q*r
         if x % 6 == 5 and y % 4 == 3 and x>0 and y>0:
@@ -56,6 +56,6 @@ def ANSWER():
     return next(tph)
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)
 
