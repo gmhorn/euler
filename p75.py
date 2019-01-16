@@ -1,6 +1,6 @@
 """ Problem 75
 
-It turns out that 12 cm isthe smallest length of wire that can be bent to form
+It turns out that 12 cm is the smallest length of wire that can be bent to form
 an integer sided right angle triangle in exactly one way, but there are many
 more exaples.
 
@@ -21,7 +21,7 @@ different integer sided right angle triangles.
 Given that L is the length of the wire, for how many valies of L <= 1,500,000
 can exactly one integer sided right angle triangle be formed?
 """
-from __future__ import print_function
+
 import collections
 import unittest
 import itertools
@@ -203,6 +203,6 @@ def TEST():
 
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(unique_pythagorean_perimeters, (1500000,))
+    import utils
+    utils.solution_printer(unique_pythagorean_perimeters, (1500000,))
 
