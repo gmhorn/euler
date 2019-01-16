@@ -19,14 +19,14 @@ In the first one-thousand expansions, how many fractions contain a numerator
 with more digits than denominator?
 """
 
-import euler.utils.contfrac
+import utils.contfrac
 
 def more_digits(h, k):
     """ Returns true if h has more digits than k. """
     return len(str(h)) > len(str(k))
 
 def ANSWER():
-    cf = euler.utils.contfrac.SquareRootCF(2)
+    cf = utils.contfrac.SquareRootCF(2)
     convergents = cf.convergents()
     topheavy_convergents = 0
     for i in range(1000):
@@ -35,5 +35,5 @@ def ANSWER():
     return topheavy_convergents
         
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)
