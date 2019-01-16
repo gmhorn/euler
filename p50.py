@@ -12,11 +12,9 @@ Which prime, below one-million, can be written as the sum of the most
 consecutive primes?
 """
 
-from __future__ import print_function
-
 import itertools
 import math
-import euler.utils.numtheory
+import utils.numtheory
 
 def summand_upper_bound(x):
     """ Sums all the primes, starting with 2, until the sum is greater than
@@ -28,7 +26,7 @@ def summand_upper_bound(x):
     we return the value len([2, 3, 5, 7, 11, 13, 17, 19, 23, 29]) == 10.
     """
     N, c = 0, 0
-    primes = euler.utils.numtheory.soe()
+    primes = utils.numtheory.soe()
     while c < x:
         c += next(primes)
         N += 1
@@ -44,7 +42,7 @@ def longest_consecutive_prime_sum_less_than(x):
     n = summand_upper_bound(x)
     # 2. Now create a list of all primes up to x (could be optimized to a
     # smaller list if performance starts degrading for large x).
-    primes = list(euler.utils.numtheory.bounded_soe(x))
+    primes = list(utils.numtheory.bounded_soe(x))
     N = len(primes)
     # 3. Now we find the solution. Our algorithm terminates when we find the
     # first slice of the prime list whose elements sum to a prime less than x.
@@ -117,5 +115,5 @@ def ANSWER():
     return sum(longest_consecutive_prime_sum_less_than(1000000))
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)
