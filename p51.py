@@ -13,9 +13,8 @@ Find the smallest prime which, by replacing part of the number (not necessarily
 adjacent digits) with the same digit, is part of an eight prime value family.
 """
 
-from __future__ import print_function
 import itertools
-import euler.utils.numtheory
+import utils.numtheory
 
 
 def generate_candidates():
@@ -26,7 +25,7 @@ def generate_candidates():
 
     Also, the last digit cannot be one of the ones ultimately replaced, so we
     consider only the first elements. """
-    prime_list = euler.utils.numtheory.bounded_soe(999999, 100000)
+    prime_list = utils.numtheory.bounded_soe(999999, 100000)
     def candidate_filter(n):
         s = str(n)[:-1]
         return (s.count('0') == 3) or (s.count('1') == 3) or (s.count('2') == 3)
@@ -50,7 +49,7 @@ def replacement_family(num, replace_digit):
 
 def ANSWER():
     candidates = generate_candidates()
-    primes = list(euler.utils.numtheory.bounded_soe(999999, 100000))
+    primes = list(utils.numtheory.bounded_soe(999999, 100000))
     for candidate in candidates:
         candidate_minus_last_digit = str(candidate)[:-1]
         if candidate_minus_last_digit.count('0') == 3:
@@ -66,5 +65,5 @@ def ANSWER():
     return -1
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(ANSWER)
+    import utils
+    utils.solution_printer(ANSWER)
