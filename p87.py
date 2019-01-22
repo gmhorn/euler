@@ -13,7 +13,7 @@ How many numbers below fifty million can be expressed as the sum of a prime
 square, prime cube, and prime fourth power?
 """
 
-import euler.utils.numtheory
+import utils.numtheory
 import bisect
 
 class PowerMemoizer(object):
@@ -34,7 +34,7 @@ def sums_below(N):
     largest_fourth = int(N**(1.0/4))+1
     largest_third = int(N**(1.0/3))+1
     largest_sqrt = int(N**(1.0/2))+1
-    primes = list(euler.utils.numtheory.bounded_soe(largest_sqrt))
+    primes = list(utils.numtheory.bounded_soe(largest_sqrt))
     # Find the indicies of the next values greater than or equal to
     # largest_fourth, largest_third, and largest_sqrt in our list of
     # primes
@@ -61,6 +61,6 @@ def PROFILE():
     cProfile.run('sums_below(5e7)')
 
 if __name__ == '__main__':
-    import euler.utils
+    import utils
     #PROFILE()
-    euler.utils.solution_printer(sums_below, (5e7,))
+    utils.solution_printer(sums_below, (5e7,))

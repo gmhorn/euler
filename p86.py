@@ -17,7 +17,7 @@ Find the least value of M such that the number of solutions first exceeds one
 million.
 """
 
-import euler.utils.numtheory
+import utils.numtheory
 
 # The insight is to consider flattening the cuboid and looking at the path.
 #               _____________
@@ -57,23 +57,23 @@ def ANSWER(goal, guess_min, guess_max, results=[]):
         results = [-1]*(guess_max+1)
 
     mid = guess_min + int((guess_max-guess_min)/2)
-    print 'cuboid_count({!s}) = {!s}'.format(mid, get_val(results, mid))
+    print('cuboid_count({!s}) = {!s}'.format(mid, get_val(results, mid)))
     # ensure we calculate our array val!
     if get_val(results, mid) == goal:
         return mid
     elif get_val(results, mid) < goal:
-        print 'FOUND LESS'
+        print('FOUND LESS')
         if get_val(results, mid+1) >= goal:
             return mid+1
         return ANSWER(goal, mid, guess_max, results)
     else: #results[mid] > goal
-        print 'FOUND MORE'
+        print('FOUND MORE')
         if get_val(results, mid-1) < goal:
             return mid
         return ANSWER(goal, guess_min, mid, results)
 
 def TESTANS():
-    print ANSWER(1000000, 100, 2000)
+    print(ANSWER(1000000, 100, 2000))
 
 def count_cuboids(n):
     pythagorean_legs = collections.defaultdict(list)
@@ -84,7 +84,7 @@ def count_cuboids(n):
     # needs an integral perimeter. So we floor P_max to an integer and add 1
     # to be safe.
     P_max = int(n*(3+(5**0.5)))+1
-    for (x, y, z) in euler.utils.numtheory.pythagorean_triples(P_max):
+    for (x, y, z) in utils.numtheory.pythagorean_triples(P_max):
         if x <= n and y < 2*x:
             pythagorean_legs[x].append(y)
         if y <= n and x < 2*y:
@@ -123,7 +123,7 @@ def formable_spider_cuboids(n):
     # needs an integral perimeter. So we floor P_max to an integer and add 1
     # to be safe.
     P_max = int(n*(3+(5**0.5)))+1
-    for (x,y,z) in euler.utils.numtheory.pythagorean_triples(P_max):
+    for (x,y,z) in utils.numtheory.pythagorean_triples(P_max):
         # We find the leg whose length is n, and set ab to be the other one
         if   x == n:     n, ab = x, y
         elif y == n:     n, ab = y, x
@@ -163,14 +163,14 @@ def min_M(number_of_cuboids):
 if __name__ == '__main__':
     #import euler.utils
     #euler.utils.solution_printer(min_M, (1000000,))
-    print '-'*20
+    print('-'*20)
     spids = list(total_spider_cuboids(20))
-    print 'Total spider cuboids:', len(spids)
+    print('Total spider cuboids:', len(spids))
     for sp in spids:
-        print sp
-    print '-'*20
-    print 'ANS'
-    print ANS(20)
+        print(sp)
+    print('-'*20)
+    print('ANS')
+    print(ANS(20))
 
 def PROFILE():
     import cProfile
