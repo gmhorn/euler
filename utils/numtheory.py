@@ -17,7 +17,7 @@ def soe():
     #def add(D, x, s):
     #    while x in D: x+= s
     #    D[x] = s
-    yield 2; yield 3; yield 5; yield 7;
+    yield 2; yield 3; yield 5; yield 7
     D = {}
     ps = (p for p in soe())
     p = next(ps) and next(ps)
@@ -65,7 +65,7 @@ def allprimes():
 
     Created by Will Ness (http://stackoverflow.com/a/10733621)
     See also http://www.haskell.org/haskellwiki/Prime_numbers#From_Squares """
-    yield 2; yield 3; yield 5; yield 7;
+    yield 2; yield 3; yield 5; yield 7
     D = {}
     ps = (p for p in allprimes())
     p = next(ps) and next(ps)
@@ -148,7 +148,7 @@ def trial_division(n):
         if p*p > n: break
         while n % p == 0:
             prime_factors[p] += 1
-            n /= p
+            n //= p
     if n > 1:
         prime_factors[n] += 1
     return dict(prime_factors)
@@ -194,10 +194,10 @@ def divisors(n):
     """
     divs = [1]
     f_dict = factorize(n)
-    for factor, count in f_dict.iteritems():
+    for factor, count in f_dict.items():
         newdivs = divs
-        for ignore in range(count):
-            newdivs = map(lambda d: d*factor, newdivs)
+        for _ in range(count):
+            newdivs = list(map(lambda d: d*factor, newdivs))
             divs += newdivs
     return sorted(divs)
 
@@ -205,7 +205,7 @@ def num_of_divisors(n):
     """ Gives number of divisors of n. Equivalent to Mathematica's
     DivisorSigma[0, n]. """
     ans = 1
-    for e in factorize(n).itervalues():
+    for e in factorize(n).values():
         ans *= (e+1)
     return ans
 
@@ -214,10 +214,10 @@ def sum_of_divisors(n):
     DivisorsSigma[1, n]. """
     num = 1
     denom = 1
-    for p, e in factorize(n).iteritems():
+    for p, e in factorize(n).items():
         num *= ((p**(e+1)) - 1)
         denom *= (p-1)
-    return num/denom
+    return num//denom
 
 def partitions(n):
     """ Yields partitions of n in ascending order.
@@ -279,7 +279,7 @@ def ordered_factorizations(n):
     """
     if n == 1: yield []
     for d in divisors(n)[1:]:
-        for sub_ordered_factorization in ordered_factorizations(n/d):
+        for sub_ordered_factorization in ordered_factorizations(n//d):
             yield [d]+sub_ordered_factorization
 
 
@@ -295,12 +295,12 @@ def unordered_factorizations(n, m=None):
     if m == 1: yield []
     for d in divisors(n)[1:]:
         if d > m: break
-        for sub_unordered_factorization in unordered_factorizations(n/d, d):
+        for sub_unordered_factorization in unordered_factorizations(n//d, d):
             yield [d] + sub_unordered_factorization
 
 def all_factorizations(n, m=None, _memo={}):
     """ Gives a list of all factorizations of n with largest element at most m.
-    See:h ttp://www.math.wvu.edu/~mays/Papers/Factorizations.pdf
+    See: http://www.math.wvu.edu/~mays/Papers/Factorizations.pdf
     
     If m is not given, gives a list of all possible factorizations of n,
     including the trivial factorization [n].
@@ -314,7 +314,7 @@ def all_factorizations(n, m=None, _memo={}):
         ans = []
         for d in divisors(n)[1:]:
             if d > m: break
-            for sub_factorization in all_factorizations(n/d, d):
+            for sub_factorization in all_factorizations(n//d, d):
                 ans.append([d]+sub_factorization)
         _memo[(n,m)] = ans
     return _memo[(n,m)]
@@ -422,7 +422,7 @@ def coprimes(N):
 
 
 def primitive_pythagorean_triples(L, give_sum=False):
-    M = int((L/2)**0.5)+1
+    M = int((L//2)**0.5)+1
     for m, n in coprimes(M):
         # Skip m,n with (m-n) even
         if (m-n) % 2 == 1:
@@ -449,7 +449,7 @@ def pythagorean_triples(L, give_sum=False):
         b = k*(m*n)
         c = k*(m^2 + n^2)    
     """
-    M = int((L/2)**0.5)+1
+    M = int((L//2)**0.5)+1
     for m, n in coprimes(M):
         # Skip m,n with (m-n) even
         if (m-n) % 2 == 0: continue

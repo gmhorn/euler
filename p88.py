@@ -24,7 +24,7 @@ In fact, as the complete set of minimal product-sum numbers for 2 <= k <= 12 is
 What is the sum of all the minimal product-sum numbers for 2 <= k <= 12000?
 """
 
-import euler.utils.numtheory
+import utils.numtheory
     
 def min_product_sum_numbers(kmin, kmax):
     # List set of k-values that haven't had a minimal N associated with them
@@ -38,10 +38,10 @@ def min_product_sum_numbers(kmin, kmax):
         # Increment N:
         N+=1
         # A prime N will never be a minimal product-sum number for any k
-        if euler.utils.numtheory.isprime(N):
+        if utils.numtheory.isprime(N):
             continue
         # We get all the possible factorizations of N (up to rearrangement)
-        for factors in euler.utils.numtheory.all_factorizations(N):
+        for factors in utils.numtheory.all_factorizations(N):
             # The factorization N*1 can never work! Bail out of the
             # following calculations for this factorizations, and move
             # to the next factorization
@@ -72,7 +72,7 @@ def min_product_sum_numbers(kmin, kmax):
 
 def sum_of_minimal_product_sum_numbers(kmin, kmax):
     d = min_product_sum_numbers(kmin, kmax)
-    vals = [v[0] for v in d.itervalues()]
+    vals = [v[0] for v in d.values()]
     return sum(set(vals))
 
 def PROFILE():
@@ -80,6 +80,6 @@ def PROFILE():
     cProfile.run('sum_of_minimal_product_sum_numbers(2, 5000)')
 
 if __name__ == '__main__':
-    import euler.utils
-    euler.utils.solution_printer(sum_of_minimal_product_sum_numbers,
+    import utils
+    utils.solution_printer(sum_of_minimal_product_sum_numbers,
                                  (2, 12000))
