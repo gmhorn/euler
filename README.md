@@ -9,3 +9,5 @@ This was originally written in Python 2 with an eye towards compatbility with Py
 3. Run the code with a `python [problem number].py` and see the results
 
 An important aspect of Project Euler solutions is that they run in under a minute. Therefore, all problems are timed.
+
+Only runs with python 2
